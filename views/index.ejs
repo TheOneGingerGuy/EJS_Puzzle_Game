@@ -1,0 +1,16 @@
+<%- include('partials/head', {title: 'The Depths of Doom, Despair, Destruction and Death'}) %>
+    <form action="/">
+        <input type="search" name="q" placeholder="Search by Name" value="<%= query %>">
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (dinos.length === 0) { %>
+    <p class="empty">No dinosaurs match "<%= query %>". Try a shorter search</p>
+    <% } else { %>
+    <div class="grid">
+        <% dinos.forEach(dino => { %>
+         <%- include('partials/card',{dino:dino}) %>
+        <% }) %>
+    </div>
+    <% } %>
+<%- include('partials/foot', { count: total }) %>
