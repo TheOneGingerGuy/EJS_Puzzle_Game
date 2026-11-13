@@ -1,7 +1,8 @@
 :root{
---prussian-blue: #00072dff;
---deep-navy: #001c55ff;
---imperial-blue: #0a2472ff;
---cornflower-ocean: #0e6ba8ff;
---frosted-blue: #a6e1faff;
+--bg: #00072dff;
+--container: #001c55ff;
+--panel: #0a2472ff;
+--card: #0e6ba8ff;
+--highlight: #a6e1faff;
+--text: rgb(234, 235, 227);
 }
