@@ -20,17 +20,17 @@ module.exports = {
     ezRiddles: {
         riddle1: {
             text: "I'm in the heavens, I illuminate the sky, I turn the tides when I pass by. What am I?",
-            answers: ["the moon", "moon"]
+            answer: ["the moon", "moon"]
             // This is a list in case you want 'the moon' and 'the big rock in space' to both be right
             // The list is not to accept 'The MoON' and "the moon" as acceptable. answers.js already normalizes the responses for you!
         },
         riddle2: {
             text: "I lurk in the deep dark, I attract those who search for light, and I have nothing worth throwing away. What am I?",
-            answers: ["angler fish", "an angler fish"]
+            answer: ["angler fish", "an angler fish"]
         },
         riddle3: {
             text: "I am essential to all, in the water, in life. I have both a solid and powdered form. What am I?",
-            answers: ["salt"]
+            answer: ["salt"]
         }
         // Possibility for even more randomly selected!
     },
@@ -59,14 +59,14 @@ module.exports = {
     },
     anagram: {
         mixedText: "poisoned",
-        solvedText: "poseidon"
+        answer: "poseidon"
     },
     morse: {
         encoded: "-- .- .-. .. .- -. .- / - .-. . -. -.-. ....",
-        translated: "mariana trench"
+        answer: "mariana trench"
     },
     finalRiddle: {
         text: "I'm trapped inside this hollow shell, I gasp for air but cannot yell. Determined, driven, compelled, to kill this beast, this spawn of hell. What am I?",
-        answers: ["player", "me", "the player"]
+        answer: ["player", "me", "the player"]
     },
 }
