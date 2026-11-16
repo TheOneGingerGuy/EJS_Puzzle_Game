@@ -7,25 +7,16 @@ const app = express()
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
 app.use(express.static(path.join(__dirname,'public')))
+app.use(express.urlencoded({extended: true}))
 
-app.get('/', (req,res)=>{
-    const query = req.query.q || ''
-    const needle = query.trim().toLowerCase()
-    const matches = needle
-    ? puzzles.filter(d => d.name.toLowerCase().includes(needle))
-    : puzzles
+app.use('/', require('./routes/games'))
 
-    res.render('index', {
-        puzzles:matches,
-        query:query,
-        total:puzzles.length
-    })
+app.use((req,res)=>{
+    res.status(400).render('not-found')
+})
+app.use((req,res)=>{
+    console.error(err)
+    res.status(500).render('error', {message: err.message})
 })
 
-app.get('/puzzle/:id',(req,res)=>{
-    const puzzle = puzzles.find(d => d.id === req.params.id)
-    if(!puzzle)
-        return res.status(404).render('404',{
-    id:req.params.id, total : puzzle.length})
-})
 app.listen(5000, ()=> console.log(`The Depths of Doom and Despair and Destruction and Death on http://localhost:5000`))
