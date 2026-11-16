@@ -28,4 +28,4 @@ app.get('/puzzle/:id',(req,res)=>{
         return res.status(404).render('404',{
     id:req.params.id, total : puzzle.length})
 })
-app.listen(5000, ()=> console.log(`Dino-Dictionary on http://localhost:5000`))
+app.listen(5000, ()=> console.log(`The Depths of Doom and Despair and Destruction and Death on http://localhost:5000`))
