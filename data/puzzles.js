@@ -1,41 +1,72 @@
 module.exports = {
     wordLadder: {
         word1:{
-            firstWord: "word",
-            goalWord: "dude"
+            firstWord: "tear",
+            goalWord: "deep"
+        },word2:{
+            firstWord: "luck",
+            goalWord: "dark"
+        },word3:{
+            firstWord: "mall",
+            goalWord: "sink"
+        },word4:{
+            firstWord: "bull",
+            goalWord: "tide"
+        },word5:{
+            firstWord: "full",
+            goalWord: "bait"
         },
-        // Possibility for even more randomly selected!
     },
     ezRiddles: {
         riddle1: {
-            text: "riddle",
-            answer: "answer"
+            text: "I'm in the heavens, I illuminate the sky, I turn the tides when I pass by. What am I?",
+            answers: ["the moon", "moon"]
+            // This is a list in case you want 'the moon' and 'the big rock in space' to both be right
+            // The list is not to accept 'The MoON' and "the moon" as acceptable. answers.js already normalizes the responses for you!
         },
         riddle2: {
-            text: "riddle",
-            answer: "answer"
+            text: "I lurk in the deep dark, I attract those who search for light, and I have nothing worth throwing away. What am I?",
+            answers: ["angler fish", "an angler fish"]
         },
         riddle3: {
-            text: "riddle",
-            answer: "answer"
+            text: "I am essential to all, in the water, in life. I have both a solid and powdered form. What am I?",
+            answers: ["salt"]
         }
         // Possibility for even more randomly selected!
     },
     ceasar: {
-        encoded: "eqhvuenceqvq",
-        // OR maybe randomly encode it every time!
-        translated: "TheCodeIs1234"
+        // word1: ["blobfish", "coral", "blue whale", "bikini bottom", "water"]
+        word1: {
+            encoded: "eoreilvk",
+            answer: "blobfish"
+        },
+        word2: {
+            encoded: "frudo",
+            answer: "coral"
+        },
+        word3: {
+            encoded: "eoxh zkdoh",
+            answer: "blue whale"
+        },
+        word4: {
+            encoded: "elnlql erwwrp",
+            answer: "bikini bottom"
+        },
+        word5: {
+            encoded: "zdwhu",
+            answer: "water"
+        }
     },
     anagram: {
-        mixedText: "dis fun fomt",
-        solvedText: "tods muffin"
+        mixedText: "poisoned",
+        solvedText: "poseidon"
     },
     morse: {
-        encoded: "-.---. -.. . .--",
-        translated: "u suck"
+        encoded: "-- .- .-. .. .- -. .- / - .-. . -. -.-. ....",
+        translated: "mariana trench"
     },
     finalRiddle: {
-        text: "riddle",
-        answer: "answer"
+        text: "I'm trapped inside this hollow shell, I gasp for air but cannot yell. Determined, driven, compelled, to kill this beast, this spawn of hell. What am I?",
+        answers: ["player", "me", "the player"]
     },
 }
