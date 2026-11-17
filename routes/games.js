@@ -7,6 +7,7 @@ const gate = require('../middleware/gate')
 
 const VICTORY_SLUG = 'gilded-owl-77'
 const caesarWords = Object.values(content.caesar)
+const riddleText = Object.values(content.ezRiddles)
 
 router.get('/', (req, res) => {
   res.render('index', { firstSlug: puzzles[0].slug })

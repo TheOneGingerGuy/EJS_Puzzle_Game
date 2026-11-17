@@ -9,10 +9,11 @@
   <p class="error"><%= error %></p>
 <% } %>
 
+<span><%= eRiddle %></span>
 <form method="POST" action="/puzzle/<%= slug %>">
   <input type="hidden" name="v" value="<%= v %>">
   <input name="answer" autocomplete="off" required>
   <button>Submit</button>
 </form>
-<!-- Need method to keep an <a> link here and hidden till user completes riddle. -->
+
 <%- include('partials/footer') %>
