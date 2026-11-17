@@ -71,6 +71,8 @@ const content = {
     },
 }
 const puzzles = [
-    {slug: 'salt-cipher-62', title: "Shifted Words" }
+    {slug: 'salt-cipher-62', title: "Shifted Words",
+     slug: 'easyRiddle', title: 'Deep Riddle'
+     }
 ]
 module.exports = { content, puzzles }

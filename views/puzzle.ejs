@@ -1,5 +1,14 @@
-<%- include('partials/header', { title: puzzle.name, total: }) %>
+<%- include('partials/header', {title: title, total: ''}) %>
+<h2><%= title %></h2>
+<p><%= encoded %></p>
 
-<!-- Need to place template materials here-->
+<% if (error) { %>
+  <p class="error"><%= error %></p>
+<% } %>
 
+<form method="POST" action="/puzzle/<%= slug %>">
+  <input type="hidden" name="v" value="<%= v %>">
+  <input type="text" name="answer" autofocus>
+  <button type="submit">Submit</button>
+</form>
 <%- include('partials/footer') %>
