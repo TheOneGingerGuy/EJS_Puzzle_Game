@@ -1,4 +1,4 @@
-const puzzles = require('../data/puzzles')
+const { puzzles } = require('../data/puzzles')
 
 function gate(req,res,next){
     const index = puzzles.findIndex(p => p.slug === req.params.slug)

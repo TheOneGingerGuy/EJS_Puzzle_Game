@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<h1><%= title %></h1>
+<p>Decode this:</p>
+<p class="cipher"><%= encoded %></p>
+
+<% if (error) { %>
+  <p class="error"><%= error %></p>
+<% } %>
+
+<form method="POST" action="/puzzle/<%= slug %>">
+  <input type="hidden" name="v" value="<%= v %>">
+  <input name="answer" autocomplete="off" required>
+  <button>Submit</button>
+</form>
+
+<%- include('partials/footer') %>

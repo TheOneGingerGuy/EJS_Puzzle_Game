@@ -1,31 +1,40 @@
 const express = require('express')
 const router = express.Router()
 
-const puzzles = require('../data/puzzles')
-const { checkAnswer } = require('../lib/answers')
+const { content, puzzles } = require('../data/puzzles')
+const { normalize } = require('../lib/answers')
 const gate = require('../middleware/gate')
 
 const VICTORY_SLUG = 'gilded-owl-77'
+const caesarWords = Object.values(content.ceasar)
+
 router.get('/', (req, res) => {
   res.render('index', { firstSlug: puzzles[0].slug })
 })
 
 router.get('/puzzle/:slug', gate, (req, res) => {
+  const v = Math.floor(Math.random() * caesarWords.length)
   res.render('puzzle', {
     title: req.puzzle.title,
-    prompt: req.puzzle.prompt,
+    encoded: caesarWords[v].encoded,
+    v,
     slug: req.puzzle.slug,
     error: null,
   })
 })
 
 router.post('/puzzle/:slug', gate, (req, res) => {
-  const guess = req.body.answer || ''
+  const v = Number(req.body.v)
+  const word = caesarWords[v]
 
-  if (!checkAnswer(req.puzzle, guess)) {
+  // Missing or tampered number: show a fresh word
+  if (!word) return res.redirect(`/puzzle/${req.puzzle.slug}`)
+
+  if (normalize(req.body.answer || '') !== normalize(word.answer)) {
     return res.render('puzzle', {
       title: req.puzzle.title,
-      prompt: req.puzzle.prompt,
+      encoded: word.encoded,
+      v,
       slug: req.puzzle.slug,
       error: 'Not quite, try again!',
     })
