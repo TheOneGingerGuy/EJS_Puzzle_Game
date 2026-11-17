@@ -28,4 +28,9 @@ app.get('/puzzle/:id',(req,res)=>{
         return res.status(404).render('404',{
     id:req.params.id, total : puzzle.length})
 })
+
+app.get('/word-ladder', (req, res) => {
+  res.render('word-ladder', { puzzles, total: puzzles.length })
+})
+
 app.listen(5000, ()=> console.log(`The Depths of Doom and Despair and Destruction and Death on http://localhost:5000`))
