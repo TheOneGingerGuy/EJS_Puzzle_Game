@@ -1,0 +1,12 @@
+<%- include('../partials/header', {title: title, total: 'Puzzle 3', bodyClass: 'caesar'}) %>
+<style>
+    .caesar {
+    background-color: var(--container);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} body {
+    display: flex;
+}
+</style>
+<p>Each letter has been shifted down the alphabet. Decode this:</p>
+<p class="cipher"><%= encoded %></p>
+<%- include('../partials/footer') %>

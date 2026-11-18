@@ -1,19 +1,24 @@
 :root{
---bg: #00072dff;
---container: #001c55ff;
---panel: #0a2472ff;
---card: #0e6ba8ff;
---highlight: #a6e1faff;
---text: rgb(234, 235, 227);
+    --bg: #00072dff;
+    --container: #001c55ff;
+    --panel: #0a2472ff;
+    --card: #0e6ba8ff;
+    --highlight: #a6e1faff;
+    --text: rgb(234, 235, 227);
 } body {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
 } #island-bg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 } #descent {
     position: fixed;
     bottom: 7.5rem;
@@ -30,4 +35,16 @@
     z-index: 1;
     color: var(--text);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+} .cipher {
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    color: var(--highlight);
+} .error {
+    color: #ff8a8a;
+} button {
+    background: var(--card);
+    color: var(--text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
 }

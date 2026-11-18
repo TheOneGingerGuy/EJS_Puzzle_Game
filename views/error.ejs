@@ -1,6 +1,9 @@
 <%- include('partials/header', {title: 'Error occured', total: 'Invalid'}) %>
-<main> <!-- Add error middleware when acquired, assign message and error here-->
-    <h1>Error <%= %></h1>
-    <p><%= %></p>
-</main>
+ <h1><%= status %></h1>
+  <p><%= message %></p>
+
+  <% if (typeof stack !== 'undefined' && stack) { %>
+    <pre><%= stack %></pre>
+  <% } %>
+
 <%- include('partials/footer') %>
