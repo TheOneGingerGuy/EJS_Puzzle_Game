@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+<section class="puzzle<%= ladder ? ' ladder' : '' %>" data-type="<%= type %>">
+  <div class="puzzle-info">
+    <h2><%= title %></h2>
+    <p class="prompt"><%= prompt %></p>
+  </div>
+
+  <div class="puzzle-body">
+    <% if (ladder) { %>
+      <div class="ladder-board" data-start="<%= ladder.first %>" data-goal="<%= ladder.goal %>" style="--letters: <%= ladder.first.length %>">
+        <div class="ladder-row">
+          <% for (const letter of ladder.first) { %>
+            <span class="tile"><%= letter %></span>
+          <% } %>
+        </div>
+        <% ladder.rows.forEach((row) => { %>
+          <div class="ladder-row step">
+            <% row.forEach((letter) => { %>
+              <span class="tile"><%= letter %></span>
+            <% }) %>
+          </div>
+        <% }) %>
+        <div class="ladder-row">
+          <% for (const letter of ladder.goal) { %>
+            <span class="tile goal"><%= letter %></span>
+          <% } %>
+        </div>
+      </div>
+    <% } else { %>
+      <p class="clue"><%= clue %></p>
+    <% } %>
+
+    <% if (error) { %>
+      <p class="error" role="alert"><%= error %></p>
+    <% } %>
+
+    <form method="POST" action="/puzzle/<%= slug %>">
+      <input type="hidden" name="v" value="<%= v %>">
+      <input type="text" name="answer" value="<%= answer %>" aria-label="Your answer"
+             maxlength="100" required autocomplete="off" spellcheck="false" autofocus>
+      <button type="submit">Submit</button>
+    </form>
+
+    <% if (hint) { %>
+      <details class="hint">
+        <summary>Need a hint?</summary>
+        <p><%= hint %></p>
+      </details>
+    <% } %>
+  </div>
+
+  <% if (story) { %>
+    <aside class="story"><%= story %></aside>
+  <% } %>
+</section>
+<% if (ladder) { %>
+  <script src="/word-ladder.js"></script>
+<% } %>
+<%- include('partials/footer') %>

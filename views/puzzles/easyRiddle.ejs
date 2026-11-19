@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<style> body {
+        display: flex;
+        background-color: linear-gradient(90deg, #00072dff, #0a2472ff);
+        }
+</style>
+
+<% if (error) { %>
+  <p class="error"><%= error %></p>
+<% } %>
+
+<span><%= eRiddle %></span>
+<form method="POST" action="/puzzle/<%= slug %>">
+  <input type="hidden" name="v" value="<%= v %>">
+  <input name="answer" autocomplete="off" required>
+  <button>Submit</button>
+</form>
+
+<%- include('partials/footer') %>
