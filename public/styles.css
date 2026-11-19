@@ -5,29 +5,309 @@
 --card: #0e6ba8ff;
 --highlight: #a6e1faff;
 --text: rgb(234, 235, 227);
-} body {
+} 
+
+body {
     display: flex;
-} #island-bg {
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+    text-align: center;
+} 
+
+#island-bg {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: -1;
-} #descent {
-    position: fixed;
-    bottom: 7.5rem;
-    right: 2rem;
+} 
+
+#descent {
+    display: inline-block;
+    position: relative;
     z-index: 1;
+    margin-top: 2rem;
+    padding: 2.25rem 6rem;
+    border: none;
+    border-radius: 1.5rem;
     background-color: var(--card);
     color: var(--text);
-    padding: 50px;
-    font-weight:bolder;
-    font-size:1.5rem;
-    border-radius:2rem;
-} header, footer {
+    font: inherit;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+} 
+
+header, footer {
     position: relative;
     z-index: 1;
     color: var(--text);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+header {
+    padding: 2rem 1.5rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: normal;
+}
+
+#header {
+    font-size: 1.4rem;
+}
+
+#progress-tracker {
+    margin: 0.4rem 0 0;
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2rem 1.5rem;
+}
+
+footer {
+    padding: 1.5rem;
+}
+
+footer a {
+    color: var(--text);
+}
+
+body:has(#island-bg) {
+    padding-left: 34vw;
+    box-sizing: border-box;
+}
+
+body:has(#island-bg) #header {
+    max-width: 22ch;
+    font-size: 2.5rem;
+}
+
+.banner {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: normal;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+body:has(#island-bg) footer {
+    display: none;
+}
+
+body:has([data-type="wordLadder"]) {
+    background: linear-gradient(var(--card), var(--panel));
+}
+
+body:has([data-type="riddle"]) {
+    background: var(--panel);
+}
+
+body:has([data-type="caesar"]) {
+    background: linear-gradient(var(--panel), var(--container));
+}
+
+body:has([data-type="anagram"]) {
+    background: var(--container);
+}
+
+body:has([data-type="morse"]) {
+    background: linear-gradient(var(--container), var(--bg));
+}
+
+body:has([data-type="finalRiddle"]) {
+    background: var(--bg);
+}
+
+.puzzle {
+    width: min(40rem, 100%);
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+.puzzle h2 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.puzzle .prompt {
+    margin: 0 0 1.5rem;
+}
+
+.puzzle .clue {
+    margin: 0 0 2rem;
+    font-size: 2rem;
+    letter-spacing: 0.08em;
+    overflow-wrap: anywhere;
+}
+
+.puzzle .error {
+    margin: 0 0 1rem;
+    color: var(--highlight);
+    font-size: 1.1rem;
+}
+
+.puzzle form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.puzzle input[type="text"] {
+    width: min(20rem, 100%);
+    padding: 0.8rem 1.2rem;
+    border: 3px solid transparent;
+    border-radius: 1rem;
+    background: #c8d0d9;
+    color: #111;
+    font: inherit;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.puzzle input[type="text"]:focus {
+    outline: none;
+    border-color: var(--highlight);
+}
+
+.puzzle button {
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 1rem;
+    background: var(--card);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.hint {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.hint summary {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.hint p {
+    margin: 0.75rem auto 0;
+    max-width: 30rem;
+}
+
+.story {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.puzzle.ladder {
+    --tile: clamp(2.75rem, min(7vw, 8vh), 5.5rem);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "info body story";
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    padding: 0 3rem;
+    box-sizing: border-box;
+}
+
+.ladder .puzzle-info {
+    grid-area: info;
+    font-size: 1.6rem;
+    line-height: 1.4;
+}
+
+.ladder .puzzle-body {
+    grid-area: body;
+}
+
+.ladder .story {
+    grid-area: story;
+    align-self: start;
+    margin-top: 0;
+    font-size: 1.6rem;
+}
+
+.ladder-board {
+    display: grid;
+    justify-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.ladder-row {
+    display: grid;
+    grid-template-columns: repeat(var(--letters), var(--tile));
+    gap: 0.9rem;
+}
+
+.tile {
+    box-sizing: border-box;
+    width: var(--tile);
+    height: var(--tile);
+    display: grid;
+    place-items: center;
+    border: 3px solid transparent;
+    border-radius: 28%;
+    background: #c8d0d9;
+    color: #111;
+    font-size: calc(var(--tile) * 0.4);
+    text-transform: uppercase;
+}
+
+.tile.goal {
+    background: var(--highlight);
+    border-color: #000;
+}
+
+@media (max-width: 800px) {
+    body:has(#island-bg) {
+        padding-left: 0;
+    }
+
+    #descent {
+        padding: 1.5rem 3.5rem;
+        font-size: 1.3rem;
+    }
+
+    .puzzle.ladder {
+        --tile: clamp(2.75rem, 15vw, 4.5rem);
+        grid-template-columns: 1fr;
+        grid-template-areas: "info" "body" "story";
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .ladder .puzzle-info,
+    .ladder .story {
+        font-size: 1.3rem;
+    }
 }

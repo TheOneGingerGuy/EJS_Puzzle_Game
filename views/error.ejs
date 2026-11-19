@@ -1,6 +1,4 @@
-<%- include('partials/header', {title: 'Error occured', total: 'Invalid'}) %>
-<main> <!-- Add error middleware when acquired, assign message and error here-->
-    <h1>Error <%= %></h1>
-    <p><%= %></p>
-</main>
+<%- include('partials/header', { title: 'Error occurred', total: 'Invalid' }) %>
+<h2>Something went wrong down here.</h2>
+<p><%= message %></p>
 <%- include('partials/footer') %>
